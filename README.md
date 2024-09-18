@@ -90,6 +90,7 @@ tqdm>=4.64.0
 filterpy==1.4.5
 scikit-image==0.19.3
 lap==0.4.0
+```
 
 ## Key Features and Detailed Functions
 
