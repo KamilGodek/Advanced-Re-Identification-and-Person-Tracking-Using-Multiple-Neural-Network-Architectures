@@ -12,7 +12,7 @@ The People Counter project addresses the need for robust, real-time people count
 
 1. **Detection**: Using the YOLO (You Only Look Once) model, the system identifies people in video frames. YOLO is known for its speed and accuracy in object detection, allowing the system to process video frames efficiently.
 
-2. **Tracking**: The SORT (Simple Online and Realtime Tracking) algorithm is employed to maintain the identities of detected individuals across multiple frames. This tracking algorithm helps in managing the continuity of identities and reduces errors in tracking.
+2. **Tracking**: ### **Tracking**: The People Counter project employs the DeepSORT (Deep Simple Online and Realtime Tracking) algorithm to track individuals across video frames. DeepSORT enhances tracking accuracy by combining object detection with appearance-based re-identification, ensuring robust management of individual identities and reducing tracking errors.
 
 3. **Re-Identification**: To associate detected individuals with previously observed instances, the system uses feature extraction techniques combined with similarity measures. The SIFT (Scale-Invariant Feature Transform) algorithm and ResNet50 model are used for extracting and comparing features.
 
