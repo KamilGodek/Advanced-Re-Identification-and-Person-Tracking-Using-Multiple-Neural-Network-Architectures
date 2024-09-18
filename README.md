@@ -90,3 +90,78 @@ tqdm>=4.64.0
 filterpy==1.4.5
 scikit-image==0.19.3
 lap==0.4.0
+
+## Key Features and Detailed Functions
+
+### 1. `extract_reid_features(image)`
+
+- **Description**: Extracts distinctive re-identification features from an image to help match individuals across different frames. This function prepares the image by resizing it, converting it to RGB, normalizing pixel values, and extracting features using a pre-trained ResNet50 model.
+- **Parameters**:
+  - `image`: Input image to be processed for feature extraction.
+- **Returns**: A feature vector represented as a NumPy array. This vector captures the unique characteristics of the person in the image.
+
+### 2. `compare_reid_features(features1, features2)`
+
+- **Description**: Computes the cosine similarity between two feature vectors to determine how similar two detected instances are. This function is crucial for re-identifying individuals based on their extracted features.
+- **Parameters**:
+  - `features1`: Feature vector of the first instance.
+  - `features2`: Feature vector of the second instance.
+- **Returns**: A similarity score between 0 and 1, where 1 indicates a perfect match and 0 indicates no similarity.
+
+### 3. `improved_feature_matching(features, persons, similarity_threshold)`
+
+- **Description**: Matches newly detected features with existing tracked individuals by comparing feature vectors and evaluating similarity scores against a predefined threshold. This function enhances the accuracy of re-identification by refining the matching process.
+- **Parameters**:
+  - `features`: Feature vector of the newly detected person.
+  - `persons`: List of currently tracked individuals.
+  - `similarity_threshold`: Minimum similarity score required for a match.
+- **Returns**: A list of matched persons, each associated with a similarity score indicating the degree of match.
+
+### 4. `compute_cost_matrix(persons, detections)`
+
+- **Description**: Constructs a cost matrix that combines feature similarity and IoU (Intersection over Union) scores to create a comprehensive metric for matching detections with existing individuals. This matrix is used in the assignment algorithm to determine the best matches.
+- **Parameters**:
+  - `persons`: List of currently tracked persons.
+  - `detections`: List of newly detected individuals.
+- **Returns**: A NumPy array representing the cost matrix used for solving the assignment problem.
+
+### 5. `main()`
+
+- **Description**: The main function that coordinates the entire video processing pipeline. It performs the following tasks:
+  - **Video Loading**: Loads the input video file from the specified path.
+  - **Model Initialization**: Initializes the YOLO model for object detection and the ResNet50 model for feature extraction.
+  - **Frame Processing**: Iterates through each frame of the video, performing detection, feature extraction, and tracking.
+  - **Tracking and Re-Identification**: Uses the SORT algorithm to track individuals and re-identifies them based on extracted features.
+  - **Result Saving**: Saves annotated video frames and snapshots of detected individuals to the output directory.
+  - **Real-Time Display**: Displays the number of people detected in the current frame and the total number of unique individuals detected so far.
+- **Execution**: Run the script with the appropriate parameters to process the video and generate results.
+
+## Additional Information
+
+### Automatic Folder Creation
+
+The script automatically creates necessary directories for storing snapshots of detected individuals. This feature simplifies the organization of results and ensures that each detected person has a dedicated folder for storing images from various frames.
+
+### GPU Utilization
+
+If a compatible GPU (CUDA) is available, the script utilizes it to accelerate computations, particularly for model inference and feature extraction. If a GPU is not available, the script defaults to using the CPU, which may result in slower processing times.
+
+### Real-Time Visualization
+
+The script provides real-time feedback by displaying the current count of detected people and the total count of unique individuals detected. This information is overlaid on the video feed, allowing users to monitor the processing and detection results as they occur.
+
+### Result Saving
+
+The processed video, along with snapshots of detected individuals, is saved to the specified output directories. This includes:
+- **Annotated Video**: The video with bounding boxes and identifiers overlaid on detected individuals.
+- **Snapshots**: Individual images of detected persons, saved in folders named after their unique identifiers.
+
+## Usage Instructions
+
+To run the People Counter project, follow these steps:
+
+1. **Install Dependencies**: Ensure all required Python libraries are installed. You can use the provided `requirements.txt` file to install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+
