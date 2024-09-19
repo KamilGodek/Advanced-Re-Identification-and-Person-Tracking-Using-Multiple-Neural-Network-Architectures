@@ -4,6 +4,10 @@
 
 The **Re-Identification** project is an advanced system designed to count and track individuals based on video footage. Utilizing cutting-edge technologies and sophisticated algorithms, the system provides real-time analysis of video streams to accurately detect, track, and re-identify people. Developed in Python, the project integrates several key libraries and models, including YOLO for object detection, DeepSort for tracking, and SIFT for re-identification.
 
+![Zrzut ekranu 2024-09-19 211651](https://github.com/user-attachments/assets/1d6fadff-70b6-4ed0-8ec2-07ffef68edd5)
+
+
+
 ## Project Overview
 
 The Re-Identification project addresses the need for robust, real-time people counting and tracking in various applications, including surveillance, crowd management, and analytics.
