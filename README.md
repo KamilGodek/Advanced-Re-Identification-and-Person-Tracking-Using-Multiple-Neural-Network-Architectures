@@ -179,10 +179,25 @@ The processed video, along with snapshots of detected individuals, is saved to t
 - **Snapshots**: Individual images of detected persons, saved in folders named after their unique identifiers.
 
 ## Usage Instructions
-
+1. **Install Dependencies**: Ensure all required Python libraries are installed. You can use the provided `requirements.txt` file to install dependencies:
 To run the Re-Identification project, follow these steps:
 
-1. **Install Dependencies**: Ensure all required Python libraries are installed. You can use the provided `requirements.txt` file to install dependencies:
+1. **Clone the Repository**:
+    git clone https://github.com/KamilGodek/Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures.git
+
+2. **Navigate to the Project Directory**:
+
+3. **Install Dependencies**: 
+    pip install -r `Requirements.txt`
+
+4. **Configure the Environment**:
+    Ensure your system has a compatible GPU with CUDA installed for acceleration. If a GPU is not available, the project will default to CPU processing. 
+  
+5. **Run the Main Script**:
+
+python people_counter/osnet_x1_0.py
+
+
 
    ```bash
    pip install -r requirements.txt
