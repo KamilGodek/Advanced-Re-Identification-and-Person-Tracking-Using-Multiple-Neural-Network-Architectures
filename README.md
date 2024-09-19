@@ -20,7 +20,7 @@ The People Counter project addresses the need for robust, real-time people count
 
 The project is organized into several components and files, each serving a specific function in the overall system:
 
-### 1. Main Script: `People_counter/people_counter.py`
+### 1. Main Script: `People_counter/OsNet_x1_0.py`
 
 This is the primary script that controls the entire video analysis pipeline. It integrates various stages of processing, including detection, tracking, and re-identification.
 
