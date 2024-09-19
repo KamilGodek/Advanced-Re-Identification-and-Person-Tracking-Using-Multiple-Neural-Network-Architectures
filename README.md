@@ -182,7 +182,9 @@ The processed video, along with snapshots of detected individuals, is saved to t
 
 1. **Clone the Repository**:
 
-    Click here to clone the repository: [Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures](https://github.com/KamilGodek/Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures.git)
+    ```bash
+    git clone https://github.com/KamilGodek/Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures.git
+    ```
 
 2. **Navigate to the Project Directory**:
 
@@ -195,7 +197,7 @@ The processed video, along with snapshots of detected individuals, is saved to t
 
     Install all required Python libraries:
     ```bash
-    pip install -r requirements.txt
+    pip install -r Requirements.txt
     ```
 
 4. **Configure the Environment**:
