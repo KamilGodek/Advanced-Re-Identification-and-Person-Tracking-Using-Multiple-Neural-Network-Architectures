@@ -191,14 +191,15 @@ To run the Re-Identification project, follow these steps:
     pip install -r `Requirements.txt`
 
 4. **Configure the Environment**:
+   
     Ensure your system has a compatible GPU with CUDA installed for acceleration. If a GPU is not available, the project will default to CPU processing. 
   
 5. **Run the Main Script**:
 
-python people_counter/osnet_x1_0.py
+    python people_counter/osnet_x1_0.py
 
 
 
    ```bash
-   pip install -r requirements.txt
+
 
