@@ -2,7 +2,7 @@
 
 # People Counter Project
 
-The **People Counter** project is an advanced system designed to count and track individuals based on video footage. Utilizing cutting-edge technologies and sophisticated algorithms, the system provides real-time analysis of video streams to accurately detect, track, and re-identify people. Developed in Python, the project integrates several key libraries and models, including YOLO for object detection, DeepSort for tracking, and SIFT for re-identification.
+The **Re-Identification** project is an advanced system designed to count and track individuals based on video footage. Utilizing cutting-edge technologies and sophisticated algorithms, the system provides real-time analysis of video streams to accurately detect, track, and re-identify people. Developed in Python, the project integrates several key libraries and models, including YOLO for object detection, DeepSort for tracking, and SIFT for re-identification.
 
 ## Project Overview
 
@@ -170,7 +170,7 @@ The processed video, along with snapshots of detected individuals, is saved to t
 
 ## Usage Instructions
 
-To run the People Counter project, follow these steps:
+To run the Re-Identification project, follow these steps:
 
 1. **Install Dependencies**: Ensure all required Python libraries are installed. You can use the provided `requirements.txt` file to install dependencies:
 
