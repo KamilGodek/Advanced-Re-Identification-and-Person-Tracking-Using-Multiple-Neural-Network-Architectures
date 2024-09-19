@@ -150,6 +150,16 @@ lap==0.4.0
 
 ## Additional Information
 
+### Google Drive Results
+
+For a detailed overview of the results produced by the five different code variants, please refer to the following Google Drive link:
+https://drive.google.com/drive/folders/189tAR4IfSBas8Gyuk6wVsT4I82gAew8j?usp=drive_link
+
+This link contains:
+
+Annotated Videos: Videos with bounding boxes and identifiers overlaid on detected individuals for each variant.
+
+
 ### Automatic Folder Creation
 
 The script automatically creates necessary directories for storing snapshots of detected individuals. This feature simplifies the organization of results and ensures that each detected person has a dedicated folder for storing images from various frames.
