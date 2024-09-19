@@ -2,17 +2,16 @@
 
 # People Counter Project
 
-The **People Counter** project is an advanced system designed to count and track individuals based on video footage. Utilizing cutting-edge technologies and sophisticated algorithms, the system provides real-time analysis of video streams to accurately detect, track, and re-identify people. Developed in Python, the project integrates several key libraries and models, including YOLO for object detection, SORT for tracking, and SIFT for re-identification.
+The **People Counter** project is an advanced system designed to count and track individuals based on video footage. Utilizing cutting-edge technologies and sophisticated algorithms, the system provides real-time analysis of video streams to accurately detect, track, and re-identify people. Developed in Python, the project integrates several key libraries and models, including YOLO for object detection, DeepSort for tracking, and SIFT for re-identification.
 
 ## Project Overview
 
-The People Counter project addresses the need for robust, real-time people counting and tracking in various applications, including surveillance, crowd management, and analytics. By leveraging state-of-the-art computer vision techniques, the system can efficiently handle high-resolution video inputs, process them in real-time, and deliver accurate results.
-
+The Re-Identification project addresses the need for robust, real-time people counting and tracking in various applications, including surveillance, crowd management, and analytics.
 ### Core Components
 
 1. **Detection**: Using the YOLO (You Only Look Once) model, the system identifies people in video frames. YOLO is known for its speed and accuracy in object detection, allowing the system to process video frames efficiently.
 
-2. **Tracking**: The People Counter project employs the DeepSORT (Deep Simple Online and Realtime Tracking) algorithm to track individuals across video frames. DeepSORT enhances tracking accuracy by combining object detection with appearance-based re-identification, ensuring robust management of individual identities and reducing tracking errors.
+2. **Tracking**: The Re-Identification project employs the DeepSORT (Deep Simple Online and Realtime Tracking) algorithm to track individuals across video frames. DeepSORT enhances tracking accuracy by combining object detection with appearance-based re-identification, ensuring robust management of individual identities and reducing tracking errors.
 
 3. **Re-Identification**: To associate detected individuals with previously observed instances, the system uses feature extraction techniques combined with similarity measures. The SIFT (Scale-Invariant Feature Transform) algorithm and ResNet50 model are used for extracting and comparing features.
 
@@ -22,35 +21,51 @@ The project is organized into several components and files, each serving a speci
 
 ### 1. Main Script: `People_counter/OsNet_x1_0.py`
 
-This is the primary script that controls the entire video analysis pipeline. It integrates various stages of processing, including detection, tracking, and re-identification.
+This project is designed for video analysis to detect, track, and re-identify individuals using the YOLO model and the OSNet_x1_0 feature extractor. Below is a detailed description of the project structure.
 
-- **Description**:
-  - **Initialization**: Loads the video file and initializes the YOLO model for object detection.
-  - **Processing**: Iterates over each frame in the video, performing the following tasks:
-    - **Detection**: Detects people in the frame using YOLO.
-    - **Feature Extraction**: Extracts features from detected people using the ResNet50 model.
-    - **Tracking**: Tracks detected individuals using the SORT algorithm.
-    - **Re-Identification**: Matches new detections with previously tracked individuals based on feature similarity.
-    - **Result Saving**: Saves snapshots of detected individuals and the processed video with annotations.
+## Project Structure
 
-- **Functions**:
-  - `extract_reid_features(image)`: Extracts re-identification features from an image using the ResNet50 model. This process involves resizing, normalizing, and preparing the image for feature extraction.
-  - `compare_reid_features(features1, features2)`: Calculates the similarity between two feature vectors using cosine similarity. This function helps in matching detected individuals with previously observed ones.
-  - `improved_feature_matching(features, persons, similarity_threshold)`: Matches new detections with existing tracked individuals based on feature similarity, refined by a similarity threshold.
-  - `compute_cost_matrix(persons, detections)`: Constructs a cost matrix for tracking people, incorporating feature similarity and Intersection over Union (IoU) scores.
-  - `main()`: The entry point of the script, orchestrating the entire video processing pipeline, from loading the video to saving results.
+The project is divided into several components and files, each serving a specific function within the system:
+
+### 1. Main Script: `people_counter/osnet_x1_0.py`
+
+This is the main script that controls the entire video processing pipeline. It integrates various stages of processing, including detection, tracking, and re-identification.
+
+**Description:**
+
+- **Initialization:**
+  - Loads the video file.
+  - Initializes the YOLO model for object detection.
+  - Initializes the TorchReID feature extractor on GPU.
+
+- **Processing:**
+  - Iterates through each frame of the video, performing the following tasks:
+    - **Detection:** Detects people in the frame using YOLO.
+    - **Feature Extraction:** Extracts features from detected individuals using the OSNet_x1_0 model.
+    - **Tracking:** Tracks detected individuals using the assignment algorithm.
+    - **Re-identification:** Matches new detections to previously tracked individuals based on feature similarity.
+    - **Saving Results:** Saves snapshots of detected individuals and the processed video with annotations.
+
+**Functions:**
+
+- `extract_reid_features(image)`: Extracts re-identification features from an image using the OSNet_x1_0 model. This process includes resizing, normalization, and preparing the image for feature extraction.
+- `cosine_similarity(features1, features2)`: Computes the similarity between two feature vectors using cosine similarity. This function helps in matching detected individuals to previously observed ones.
+- `calculate_iou(box1, box2)`: Calculates the Intersection over Union (IoU) between two bounding boxes.
+- `main()`: The entry point of the script that coordinates the entire video processing pipeline, from loading the video to saving the results.
 
 ### 2. Output Directory: `output_people/`
 
 This directory contains snapshots of detected individuals, organized into folders for each person.
 
-- **Folder Structure**:
-  - `person_<id>/`: Each folder corresponds to a detected individual, where `<id>` is a unique identifier assigned to the person.
-    - `frame_<frame_number>.jpg`: Images of the person from different video frames. These images are captured and saved for review and analysis.
+**Folder Structure:**
+
+- `person_<id>/`: Each folder corresponds to a detected person, where `<id>` is a unique identifier assigned to that person.
+- `frame_<frame_number>.jpg`: Images of the person from different frames of the video. These images are captured and saved for review and analysis.
 
 ### 3. Configuration Files
 
-- **`config.yaml`**: Contains configuration settings for the YOLO model, ResNet50, and other parameters. This file allows easy adjustment of model settings and processing options.
+- `config.yaml`: Contains configuration settings for the YOLO model, OSNet_x1_0, and other parameters. This file allows easy adjustment of model settings and processing options.
+
 
 ## Requirements
 
