@@ -184,8 +184,7 @@ To run the Re-Identification project, follow these steps:
 
 1. **Clone the Repository**:
    
-     ```bash
- git clone https://github.com/KamilGodek/Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures.git
+     ```bash git clone https://github.com/KamilGodek/Advanced-Re-Identification-and-Person-Tracking-Using-Multiple-Neural-Network-Architectures.git
 
 2. **Navigate to the Project Directory**:
 
