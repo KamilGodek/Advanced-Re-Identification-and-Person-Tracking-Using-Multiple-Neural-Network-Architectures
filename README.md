@@ -107,50 +107,46 @@ scikit-image==0.19.3
 lap==0.4.0
 ```
 
-## Key Features and Detailed Functions
+## Main Features and Detailed Functions
 
 ### 1. `extract_reid_features(image)`
+**Description:** Extracts re-identification features from an image to help match individuals across different frames. This function prepares the image by resizing, converting to RGB, normalizing pixel values, and extracting features using a pre-trained OSNet_x1_0 model.
+**Parameters:**
+- `image`: The input image from which features are to be extracted.
+**Returns:** A feature vector represented as a NumPy array. This vector captures the unique characteristics of the person in the image.
 
-- **Description**: Extracts distinctive re-identification features from an image to help match individuals across different frames. This function prepares the image by resizing it, converting it to RGB, normalizing pixel values, and extracting features using a pre-trained ResNet50 model.
-- **Parameters**:
-  - `image`: Input image to be processed for feature extraction.
-- **Returns**: A feature vector represented as a NumPy array. This vector captures the unique characteristics of the person in the image.
-
-### 2. `compare_reid_features(features1, features2)`
-
-- **Description**: Computes the cosine similarity between two feature vectors to determine how similar two detected instances are. This function is crucial for re-identifying individuals based on their extracted features.
-- **Parameters**:
-  - `features1`: Feature vector of the first instance.
-  - `features2`: Feature vector of the second instance.
-- **Returns**: A similarity score between 0 and 1, where 1 indicates a perfect match and 0 indicates no similarity.
+### 2. `cosine_similarity(features1, features2)`
+**Description:** Computes the cosine similarity between two feature vectors to determine how similar two detected instances are. This function is crucial for re-identifying people based on their extracted features.
+**Parameters:**
+- `features1`: Feature vector of the first instance.
+- `features2`: Feature vector of the second instance.
+**Returns:** A similarity score between 0 and 1, where 1 indicates a perfect match and 0 indicates no similarity.
 
 ### 3. `improved_feature_matching(features, persons, similarity_threshold)`
-
-- **Description**: Matches newly detected features with existing tracked individuals by comparing feature vectors and evaluating similarity scores against a predefined threshold. This function enhances the accuracy of re-identification by refining the matching process.
-- **Parameters**:
-  - `features`: Feature vector of the newly detected person.
-  - `persons`: List of currently tracked individuals.
-  - `similarity_threshold`: Minimum similarity score required for a match.
-- **Returns**: A list of matched persons, each associated with a similarity score indicating the degree of match.
+**Description:** Matches newly detected features to currently tracked individuals by comparing feature vectors and evaluating similarity scores against a predefined threshold. This function enhances re-identification accuracy by refining the matching process.
+**Parameters:**
+- `features`: Feature vector of the newly detected person.
+- `persons`: List of currently tracked individuals.
+- `similarity_threshold`: Minimum similarity score required for a match.
+**Returns:** A list of matched individuals, each associated with a similarity score indicating the degree of match.
 
 ### 4. `compute_cost_matrix(persons, detections)`
-
-- **Description**: Constructs a cost matrix that combines feature similarity and IoU (Intersection over Union) scores to create a comprehensive metric for matching detections with existing individuals. This matrix is used in the assignment algorithm to determine the best matches.
-- **Parameters**:
-  - `persons`: List of currently tracked persons.
-  - `detections`: List of newly detected individuals.
-- **Returns**: A NumPy array representing the cost matrix used for solving the assignment problem.
+**Description:** Constructs a cost matrix that combines feature similarity and Intersection over Union (IoU) scores to create a comprehensive metric for matching detections to existing individuals. This matrix is used in the assignment algorithm to determine the best matches.
+**Parameters:**
+- `persons`: List of currently tracked individuals.
+- `detections`: List of newly detected individuals.
+**Returns:** A NumPy array representing the cost matrix used to solve the assignment problem.
 
 ### 5. `main()`
+**Description:** Coordinates the entire video processing pipeline. Performs the following tasks:
+- **Loading Video:** Loads the input video file from the specified path.
+- **Initializing Models:** Initializes the YOLO model for object detection and the OSNet_x1_0 model for feature extraction.
+- **Processing Frames:** Iterates through each video frame, performing detection, feature extraction, and tracking.
+- **Tracking and Re-identification:** Uses the SORT algorithm to track individuals and re-identify them based on extracted features.
+- **Saving Results:** Saves annotated video frames and snapshots of detected individuals to the output directory.
+- **Real-time Display:** Displays the number of detected individuals in the current frame and the total number of unique individuals detected so far.
+**Execution:** Run the script with appropriate parameters to process the video and generate results.
 
-- **Description**: The main function that coordinates the entire video processing pipeline. It performs the following tasks:
-  - **Video Loading**: Loads the input video file from the specified path.
-  - **Model Initialization**: Initializes the YOLO model for object detection and the ResNet50 model for feature extraction.
-  - **Frame Processing**: Iterates through each frame of the video, performing detection, feature extraction, and tracking.
-  - **Tracking and Re-Identification**: Uses the SORT algorithm to track individuals and re-identifies them based on extracted features.
-  - **Result Saving**: Saves annotated video frames and snapshots of detected individuals to the output directory.
-  - **Real-Time Display**: Displays the number of people detected in the current frame and the total number of unique individuals detected so far.
-- **Execution**: Run the script with the appropriate parameters to process the video and generate results.
 
 ## Additional Information
 
