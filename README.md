@@ -142,7 +142,7 @@ lap==0.4.0
 - **Loading Video:** Loads the input video file from the specified path.
 - **Initializing Models:** Initializes the YOLO model for object detection and the OSNet_x1_0 model for feature extraction.
 - **Processing Frames:** Iterates through each video frame, performing detection, feature extraction, and tracking.
-- **Tracking and Re-identification: Utilizes an assignment algorithm based on the Hungarian method (a component of the SORT algorithm) to assign detected objects to existing tracks. The algorithm computes a cost matrix based on feature similarity and Intersection over Union (IoU), and then performs optimal assignment to track and identify individuals based on the extracted features
+- **Tracking and Re-identification:** Utilizes an assignment algorithm based on the Hungarian method (a component of the SORT algorithm) to assign detected objects to existing tracks. The algorithm computes a cost matrix based on feature similarity and Intersection over Union (IoU), and then performs optimal     assignment to track and identify individuals based on the extracted features
 - **Saving Results:** Saves annotated video frames and snapshots of detected individuals to the output directory.
 - **Real-time Display:** Displays the number of detected individuals in the current frame and the total number of unique individuals detected so far.
 **Execution:** Run the script with appropriate parameters to process the video and generate results.
